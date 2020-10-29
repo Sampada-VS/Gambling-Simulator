@@ -1,8 +1,8 @@
 package com.bridgelabz.gamblingproblem;
 
 public class GamblerSimulator {
-	int stake=100;
-	int bet=0;
+	public static final int STAKE=100;
+	public static final int BET=1;
 	public static void main(String[] args) {
 	}
 }
