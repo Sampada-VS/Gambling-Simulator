@@ -1,7 +1,6 @@
 package com.bridgelabz.gamblingproblem;
 
 import java.util.HashMap;
-import java.util.Map.Entry;
 
 public class GamblerSimulator {
 	public static final int STAKE = 100;
