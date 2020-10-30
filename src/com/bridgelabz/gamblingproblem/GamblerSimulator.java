@@ -8,7 +8,7 @@ public class GamblerSimulator {
 	public static final int BET = 1;
 	public static final float STAKE_HALF = 0.5f;
 
-	public static int stake = STAKE,totalAmount=0;
+	public static int stake,totalAmount;
 	static HashMap<Integer, Integer> wonDays = new HashMap<>();
 	static HashMap<Integer, Integer> loseDays = new HashMap<>();
 
@@ -22,6 +22,7 @@ public class GamblerSimulator {
 	}
 
 	public static int resignGame(int day) {
+		stake=STAKE;
 		int losingAmount = (int) Math.round(STAKE * STAKE_HALF);
 		int winningAmount = (int) Math.round(STAKE + (STAKE * STAKE_HALF));
 		boolean flag = true;
@@ -29,12 +30,12 @@ public class GamblerSimulator {
 			winOrLose();
 			if (stake == losingAmount) {
 				loseDays.put(day, stake);
-				System.out.println("Lose on Day :"+day+ " == Final Amount : " + loseDays.get(day));
+				System.out.println("Lose on Day :"+day+ " == Amount earned : " + loseDays.get(day));
 				flag = false;
 			}
 			if (stake == winningAmount) {
 				wonDays.put(day, stake);
-				System.out.println("Won on Day :"+day+ " == Final Amount : " + wonDays.get(day));
+				System.out.println("Won on Day :"+day+ " == Amount earned: " + wonDays.get(day));
 				flag = false;
 			}
 		}
