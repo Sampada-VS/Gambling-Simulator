@@ -30,12 +30,12 @@ public class GamblerSimulator {
 			winOrLose();
 			if (stake == losingAmount) {
 				loseDays.put(day, stake);
-				System.out.println("Lose on Day :"+day+ " == Amount earned : " + loseDays.get(day));
+				System.out.println("On Day :"+day+ " == Final Amount : " + loseDays.get(day));
 				flag = false;
 			}
 			if (stake == winningAmount) {
 				wonDays.put(day, stake);
-				System.out.println("Won on Day :"+day+ " == Amount earned : " + wonDays.get(day));
+				System.out.println("On Day :"+day+ " == Final Amount : " + wonDays.get(day));
 				flag = false;
 			}
 		}
@@ -55,5 +55,8 @@ public class GamblerSimulator {
 	}
 	public static void main(String[] args) {
 		totalAmountForMonth();
+		System.out.println("Gambler won on "+wonDays.size()+" days in month. ");
+		System.out.println("Gambler lost on "+loseDays.size()+" days in month. ");
+
 	}
 }
