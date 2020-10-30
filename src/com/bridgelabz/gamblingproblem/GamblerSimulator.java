@@ -35,7 +35,7 @@ public class GamblerSimulator {
 			}
 			if (stake == winningAmount) {
 				wonDays.put(day, stake);
-				System.out.println("Won on Day :"+day+ " == Amount earned: " + wonDays.get(day));
+				System.out.println("Won on Day :"+day+ " == Amount earned : " + wonDays.get(day));
 				flag = false;
 			}
 		}
