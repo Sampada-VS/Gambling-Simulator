@@ -8,20 +8,17 @@ public class GamblerSimulator {
 	public static final int BET = 1;
 	public static final float STAKE_HALF = 0.5f;
 
-	public static int stake = STAKE;
+	public static int stake = STAKE,totalAmount=0;
 	static HashMap<Integer, Integer> wonDays = new HashMap<>();
 	static HashMap<Integer, Integer> loseDays = new HashMap<>();
 
 	public static void winOrLose() {
 		int winLose = (int) ((Math.random() * 10) % 2);
 		if (winLose == 1) {
-			System.out.println("Gambler won bet.");
 			stake = stake + BET;
 		} else {
-			System.out.println("Gambler lost bet.");
 			stake = stake - BET;
 		}
-		System.out.println("Stake :" + stake);
 	}
 
 	public static int resignGame(int day) {
@@ -32,24 +29,30 @@ public class GamblerSimulator {
 			winOrLose();
 			if (stake == losingAmount) {
 				loseDays.put(day, stake);
+				System.out.println("Lose on Day :"+day+ " == Final Amount : " + loseDays.get(day));
 				flag = false;
 			}
 			if (stake == winningAmount) {
 				wonDays.put(day, stake);
+				System.out.println("Won on Day :"+day+ " == Final Amount : " + wonDays.get(day));
 				flag = false;
 			}
 		}
-		for (Entry<Integer, Integer> m : wonDays.entrySet()) {
-			System.out.println("Won on Day :"+m.getKey() + " == Final Amount : " + m.getValue());
-		}
-		for (Entry<Integer, Integer> m1 : loseDays.entrySet()) {
-			System.out.println("Lost on Day :"+m1.getKey() + " == Final Amount : " + m1.getValue());
-		}
 		return stake;
-
 	}
 
+	public static void totalAmountForMonth() {
+		int totalDays=20;
+		int day=1;
+		int amountPerDay=0;
+		while (day<=totalDays) {
+			amountPerDay=resignGame(day);
+			totalAmount=totalAmount+amountPerDay;
+			day++;
+		}
+		System.out.println("Total amount gambler get is : "+totalAmount );
+	}
 	public static void main(String[] args) {
-		resignGame(1);
+		totalAmountForMonth();
 	}
 }
